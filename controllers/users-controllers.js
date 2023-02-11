@@ -18,6 +18,8 @@ const getUsers = async (req, res, next) => {
 }
 
 const signUp = async (req, res, next) => {
+  console.log('DEBUG - signup')
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new HttpError('Invalid inputs', 422);

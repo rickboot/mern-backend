@@ -39,6 +39,11 @@ app.use((req, res, next) => {
 
 // handle errors
 app.use((error, req, res, next) => {
+
+console.log('********* DEBUG *********')
+console.log('err: ', error.code)
+
+
   // remove uploaded files, if any 
   if (req.file) {
     fs.unlink(req.file.path, err => console.log(err));
@@ -46,7 +51,7 @@ app.use((error, req, res, next) => {
   if (res.headerSent) {
     return next(error);
   }
-  res.status(error.code || 500);
+  res.status(500);
   res.json({message: error.message || "Unknown error occurred!"});
 });
 
