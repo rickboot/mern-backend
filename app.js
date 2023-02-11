@@ -8,10 +8,9 @@ const mongoose = require('mongoose');
 const placesRoutes = require('./routes/places-routes');
 const usersRoutes = require('./routes/users-routes');
 const HttpError = require('./models/http-error');
-const { normalize } = require('path');
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 mongoose.set('strictQuery', false); // stop deprecation warning nag
 const mongoUri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ncbdyrf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
